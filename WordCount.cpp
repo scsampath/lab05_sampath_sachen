@@ -137,16 +137,83 @@ std::string WordCount::makeValidWord(std::string word) {
 }
 
 void WordCount::dumpWordsSortedByWord(std::ostream &out) const {
-	// STUB
-	return "";
+	std::vector<std::pair<std::string, int>> occurance;
+	for(size_t i = 0; i < CAPACITY; i++){
+		for(size_t j = 0; j < table[i].size(); j++){
+			occurance.push_back(table[i].at(j));
+		}
+	}
+	if(occurance.size() > 0)
+	{
+		while(occurance.size() != 0){
+			size_t index = 0;
+			int occur = occurance.at(0).second;
+			string word = occurance.at(0).first;
+			for(size_t i = 0; i < occurance.size(); i++){
+				if(word < occurance.at(i).first){
+					index = i;
+					occur = occurance.at(i).second;
+					word = occurance.at(i).first;
+				}
+			}
+			occurance.erase(occurance.begin() + index);
+			out << word << "," << occur;
+			if(occurance.size() != 0){
+				out<<"\n";
+			}
+		}
+	}
 }
 
-void WordCount::dumpWordsSortedByOccurence(std::ostream &out) const {
-	// STUB
-	return "";
+void WordCount::dumpWordsSortedByOccurence(std::ostream &out) const{
+	std::vector<std::pair<std::string, int>> occurance;
+	for(size_t i = 0; i < CAPACITY; i++){
+		for(size_t j = 0; j < table[i].size(); j++){
+			occurance.push_back(table[i].at(j));
+		}
+	}
+	if(occurance.size() > 0)
+	{
+		while(occurance.size() != 0){
+			size_t index = 0;
+			int maxOccurance = occurance.at(0).second;
+			string word = occurance.at(0).first;
+			for(size_t i = 0; i < occurance.size(); i++){
+				if(maxOccurance > occurance.at(i).second){
+					index = i;
+					maxOccurance = occurance.at(i).second;
+					word = occurance.at(i).first;
+				}
+				else if(maxOccurance == occurance.at(i).second){
+					if(word > occurance.at(i).first){
+						index = i;
+						maxOccurance = occurance.at(i).second;
+						word = occurance.at(i).first;
+					}
+				}
+			}
+			occurance.erase(occurance.begin() + index);
+			out << word << "," << maxOccurance;
+			if(occurance.size() != 0){
+				out<<"\n";
+			}
+		}
+	}
 }
 
 void WordCount::addAllWords(std::string text) {
-	// STUB
-	return;
+  int front = 0;
+  for(size_t i = 0; i < text.size(); i++){
+    if(text.at(i) == ' ' || text.at(i) == '\n' || text.at(i) == '\t'){
+		std::string word = text.substr(front, i - front);
+		std::string validWord = makeValidWord(word);
+		incrWordCount(validWord);
+		front = i + 1;
+	}
+	else if(i == text.size() - 1){
+		std::string word = text.substr(front, (i + 1) - front);
+		std::string validWord = makeValidWord(word);
+		incrWordCount(validWord);
+	}
+  }
 }
