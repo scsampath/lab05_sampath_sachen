@@ -3,22 +3,22 @@ CXX=clang++
 
 CXXFLAGS = -std=c++11 -Wall -Wextra -Werror
 
-BINARIES=test1 test2 test3
+BINARIES=lab05Test01 lab05Test02 lab05Test03
 
 all: ${BINARIES}
 
 tests: ${BINARIES}
-	./test1
-	./test2
-	./test3
+	.lab05Test01
+	.lab05Test02
+	.lab05Test03
 
-test1: test1.o WordCount.o tddFuncs.o
+lab05Test01: lab05Test01.o WordCount.o tddFuncs.o
 	${CXX} $^ -o $@
 
-test2: test2.o WordCount.o tddFuncs.o
+lab05Test02: lab05Test02.o WordCount.o tddFuncs.o
 	${CXX} $^ -o $@
 
-test3: test3.o WordCount.o tddFuncs.o
+lab05Test03: lab05Test03.o WordCount.o tddFuncs.o
 	${CXX} $^ -o $@
 
 clean:
