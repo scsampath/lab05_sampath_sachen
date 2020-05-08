@@ -1,4 +1,4 @@
-//edited by Sachen Sampath, cs32, 5/3/2020
+//edited by Sachen Sampath, cs32, 5/8/2020
 #include "WordCount.h"
 #include "tddFuncs.h"
 #include <iostream>
@@ -7,7 +7,6 @@ using namespace std;
 
 int main() {
 
-  // A sample test.
   cout<<"addAllWords Test"<<endl;
 
   WordCount I;
@@ -28,5 +27,28 @@ int main() {
   ASSERT_EQUALS(6, I.getNumUniqueWords());
   //getWordCount
   ASSERT_EQUALS(2, I.getWordCount("first"));
+
+  WordCount I1;
+  I1.addAllWords("");
+  //getTotalWords
+  ASSERT_EQUALS(0, I1.getTotalWords());
+  //getNumUniqueWords
+  ASSERT_EQUALS(0, I1.getNumUniqueWords());
+  //getWordCount
+  ASSERT_EQUALS(0, I1.getWordCount("first"));
+  I1.addAllWords(" hey this is a completely good sentence");
+  //getTotalWords
+  ASSERT_EQUALS(7, I1.getTotalWords());
+  //getNumUniqueWords
+  ASSERT_EQUALS(7, I1.getNumUniqueWords());
+  //getWordCount
+  ASSERT_EQUALS(1, I1.getWordCount("hey"));
+  I1.addAllWords("hey this is not a completely good sentence ??? ");
+  //getTotalWords
+  ASSERT_EQUALS(15, I1.getTotalWords());
+  //getNumUniqueWords
+  ASSERT_EQUALS(8, I1.getNumUniqueWords());
+  //getWordCount
+  ASSERT_EQUALS(2, I1.getWordCount("hey"));
 
 }

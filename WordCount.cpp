@@ -1,3 +1,4 @@
+//edited by Sachen Sampath, cs 32, 5/8/2020
 // WordCount.cpp
 
 #include "WordCount.h"

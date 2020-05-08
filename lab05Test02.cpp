@@ -1,4 +1,4 @@
-//edited by Sachen Sampath, cs32, 5/3/2020
+//edited by Sachen Sampath, cs32, 5/8/2020
 #include "WordCount.h"
 #include "tddFuncs.h"
 #include <iostream>

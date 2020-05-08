@@ -1,4 +1,4 @@
-//edited by Sachen Sampath, cs32, 5/3/2020
+//edited by Sachen Sampath, cs32, 5/8/2020
 #include "WordCount.h"
 #include "tddFuncs.h"
 #include <iostream>
@@ -7,7 +7,6 @@ using namespace std;
 
 int main() {
 
-  // A sample test.
   cout<<"dumpWordsSortedByWord Test"<<endl;
 
   WordCount I;
@@ -27,10 +26,10 @@ int main() {
   ASSERT_EQUALS(expectedSortedByOccurence1,occurence1.str());
 
   WordCount I2;
-  I2.addAllWords("Third third THird Second SECONd FiRSt");
+  I2.addAllWords("Third Second SECONd FiRSt");
   ostringstream occurence2;
   I2.dumpWordsSortedByWord(occurence2);
-  std::string expectedSortedByOccurence2 = string("third,3") + "\n" 
+  std::string expectedSortedByOccurence2 = string("third,1") + "\n" 
   + string("second,2") + "\n" 
   + string("first,1");
   ASSERT_EQUALS(expectedSortedByOccurence2,occurence2.str());
