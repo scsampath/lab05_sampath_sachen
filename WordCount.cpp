@@ -159,9 +159,8 @@ void WordCount::dumpWordsSortedByWord(std::ostream &out) const {
 			}
 			occurance.erase(occurance.begin() + index);
 			out << word << "," << occur;
-			if(occurance.size() != 0){
-				out<<"\n";
-			}
+			out<<"\n";
+			
 		}
 	}
 }
@@ -195,9 +194,8 @@ void WordCount::dumpWordsSortedByOccurence(std::ostream &out) const{
 			}
 			occurance.erase(occurance.begin() + index);
 			out << word << "," << maxOccurance;
-			if(occurance.size() != 0){
-				out<<"\n";
-			}
+			out<<"\n";
+			
 		}
 	}
 }
